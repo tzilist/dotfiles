@@ -1,0 +1,20 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"]
+    },
+    "rust": {
+      "command": "rust-analyzer",
+      "rootPatterns": ["Cargo.toml"],
+      "filetypes": ["rust"]
+    },
+    "elixirLS": {
+      "command": "/usr/local/bin/elixir-ls/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+    }
+  }
+}

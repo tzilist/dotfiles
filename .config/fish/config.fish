@@ -1,0 +1,72 @@
+# Abbreviations
+abbr -a vimdiff 'nvim -d'
+abbr -a e nvim
+abbr -a vim nvim
+abbr -a g git
+abbr -a gc 'git checkout'
+abbr -a ga 'git add -p'
+abbr -a p 'cd ~/projects'
+
+# KUBERNETES
+abbr -a k 'kubectl'
+
+# PATH
+set -x GOPATH $HOME/go
+set -x GOBIN $GOPATH/bin
+test -d $GOBIN; and set -x PATH $PATH $GOBIN
+
+# NODE
+set -gx PATH /Users/ted/.fnm/current/bin $PATH;
+set -gx FNM_MULTISHELL_PATH /Users/ted/.fnm/current;
+set -gx FNM_DIR /Users/ted/.fnm;
+set -gx FNM_NODE_DIST_MIRROR https://nodejs.org/dist
+set -gx FNM_LOGLEVEL info
+
+set -x YARNPATH $HOME/.yarn/bin
+test -d $YARNPATH; and set -x PATH $PATH $YARNPATH
+
+# RUST
+set -x RUSTPATH $HOME/.cargo/bin
+test -d $RUSTPATH; and set -x PATH $PATH $RUSTPATH
+
+# GO
+set -x GOPATH $HOME/go/bin
+test -d $GOPATH; and set -x PATH $PATH $GOPATH
+
+# RUBY
+status --is-interactive; and source (rbenv init -|psub)
+
+# Linkerd
+set -x LINKERDPATH $HOME/.linkerd2/bin
+test -d $LINKERDPATH; and set -x PATH $PATH $LINKERDPATH
+
+# Gloo
+set -x GLOOPATH $HOME/.gloo/bin
+test -d $GLOOPATH; and set -x PATH $PATH $GLOOPATH
+
+# Wasme
+set -x WASMEPATH $HOME/.wasme/bin
+test -d $WASMEPATH; and set -x PATH $PATH $WASMEPATH
+
+# Nice ls replacement
+if command -v exa > /dev/null
+	abbr -a l 'exa'
+	abbr -a ls 'exa'
+	abbr -a ll 'exa -l'
+	abbr -a lll 'exa -la'
+else
+	abbr -a l 'ls'
+	abbr -a ll 'ls -l'
+	abbr -a lll 'ls -la'
+end
+
+# Base
+set -x EDITOR 'nvim'
+
+if status is-interactive
+and not set -q TMUX
+    exec tmux
+end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ted/google-cloud-sdk/path.fish.inc' ]; . '/Users/ted/google-cloud-sdk/path.fish.inc'; end
